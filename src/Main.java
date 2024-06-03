@@ -3,7 +3,7 @@ public class Main {
 
         Task1();
         Task2();
-
+        Task3();
     }
 
     private static void Task1() {
@@ -31,7 +31,8 @@ public class Main {
             System.out.printf(ageBelow18, age);
         }
     }
-private static void Task2() {
+
+    private static void Task2() {
     /*
 Человек одевается в зависимости от температуры воздуха. Напишите программу, которая выводит сообщение:
 «На улице холодно, нужно надеть шапку» — если температура ниже 5 градусов.
@@ -43,12 +44,32 @@ private static void Task2() {
         String tempAbove = "На улице %d град. Сегодня тепло, можно идти без шапки.\n";
         String tempBelow = "На улице %d град. На улице холодно, нужно надеть шапку.\n";
         short tempAir = 5;
-        if (tempAir > 5 ) {
-            System.out.printf(tempAbove,tempAir);
+        if (tempAir > 5) {
+            System.out.printf(tempAbove, tempAir);
         } else if (tempAir < 5) {
-            System.out.printf(tempBelow,tempAir);
+            System.out.printf(tempBelow, tempAir);
         } else {
-            System.out.printf("На улице %d грудусов. Надо спросить маму одевать шапку или нет.\n",tempAir);
+            System.out.printf("На улице %d грудусов. Надо спросить маму одевать шапку или нет.\n", tempAir);
         }
-}
+    }
+
+    private static void Task3() {
+/*
+За превышение скорости водителю могут выписать штраф. Напишите программу, которая сообщает водителю о том, что:
+
+ скорость превышена, если она больше 60 км/ч;
+ превышения скорости нет, если она меньше 60 км/ч.
+При выполнении каждого условия программа должна выводить такое сообщение: «Если скорость …,
+то (вывести в зависимости от результата) придется заплатить штраф / можно ездить спокойно».
+ */
+        System.out.println("\n==========[ Task 3. ]==========");
+        short speed = 60;
+        String speedAbove = "Если скорость %d, то придется заплатить штраф.\n";
+        String speedBelow = "Если скорость %d, то можно ездить спокойно.\n";
+        if (speed > 60) {
+            System.out.printf(speedAbove, speed);
+        } else if (speed <= 60) {
+            System.out.printf(speedBelow, speed);
+        }
+    }
 }
