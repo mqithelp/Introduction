@@ -120,7 +120,7 @@ public class Main {
         if ((placeSit - occupiedPlaceSit) > 0) {
             System.out.printf("В вагоне осталось %d сидячих мест.\n", placeSit - occupiedPlaceSit);
         } else if (placeSit - occupiedPlaceSit < 0) {
-            System.out.printf("В вагоне не хватает %d сидячих мест.\n", (occupiedPlaceSit-placeSit));
+            System.out.printf("В вагоне не хватает %d сидячих мест.\n", (occupiedPlaceSit - placeSit));
         } else {
             System.out.println("Все сидячие места в вагоне заняты.");
         }
@@ -135,5 +135,17 @@ public class Main {
 
     private static void Task7() {
         System.out.println("\n==========[ Task 7. ]==========");
+        int one = 1;
+        int two = 5;
+        int three = 4;
+        int max;
+        if (one > two && one > three) {
+            max = one;
+        } else if (two > one && two > three) {
+            max = two;
+        } else {
+            max = three;
+        }
+        System.out.printf("Максимальное число из %d, %d, %d равно %d\n",one, two, three, max);
     }
 }
