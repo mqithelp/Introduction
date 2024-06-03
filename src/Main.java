@@ -4,6 +4,7 @@ public class Main {
         Task1();
         Task2();
         Task3();
+        Task4();
     }
 
     private static void Task1() {
@@ -70,6 +71,23 @@ public class Main {
             System.out.printf(speedAbove, speed);
         } else if (speed <= 60) {
             System.out.printf(speedBelow, speed);
+        }
+    }
+
+    private static void Task4() {
+        System.out.println("\n==========[ Task 4. ]==========");
+        short age = 24;
+        if (age >= 2 && age <= 6) {
+            System.out.printf("Если возраст человека равен %d, то ему нужно ходить в детский сад.\n", age);
+        }
+        if (age >= 7 && age <= 17) {
+            System.out.printf("Если возраст человека равен %d, то ему нужно ходить в школу.\n", age);
+        }
+        if (age >= 18 && age <= 24) {
+            System.out.printf("Если возраст человека равен %d, то ему нужно ходить в университет.\n", age);
+        }
+        if (age > 24) {
+            System.out.printf("Если возраст человека равен %d, то ему нужно ходить на работу.\n", age);
         }
     }
 }
