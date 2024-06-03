@@ -5,6 +5,7 @@ public class Main {
         Task2();
         Task3();
         Task4();
+        Task5();
     }
 
     private static void Task1() {
@@ -88,6 +89,22 @@ public class Main {
         }
         if (age > 24) {
             System.out.printf("Если возраст человека равен %d, то ему нужно ходить на работу.\n", age);
+        }
+    }
+
+    private static void Task5() {
+        System.out.println("\n==========[ Task 5. ]==========");
+        int age = 15;
+        if (age < 5) {
+            System.out.printf("Если возраст ребенка равен %d, то ему нельзя кататься на аттракционе.\n",age);
+        }
+        if (age >= 5 && age <= 14) {
+            System.out.printf("Если возраст ребенка равен %d, то ему можно кататься " +
+                    "на аттракционе в сопровождении взрослого.\n",age);
+        }
+        if (age > 14) {
+            System.out.printf("Если возраст ребенка равен %d, то ему можно кататься " +
+                    "на аттракционе без сопровождении взрослого.\n",age);
         }
     }
 }
