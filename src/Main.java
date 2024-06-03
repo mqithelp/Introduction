@@ -2,6 +2,7 @@ public class Main {
     public static void main(String[] args) {
 
         Task1();
+
     }
 
     private static void Task1() {
@@ -14,5 +15,19 @@ public class Main {
 то (вывести в зависимости от результата) он совершеннолетний / он не достиг совершеннолетия, нужно немного подождать».
      */
         System.out.println("==========[ Task 1. ]==========");
+        String ageAbove18 = "Если возраст человека равен %d, он совершеннолетний.\n";
+        String ageBelow18 = "Если возраст человека равен %d, он не достиг совершеннолетия, нужно немного подождать.\n";
+        int age = 15;
+        if (age >= 18) {
+            System.out.printf(ageAbove18, age);
+        } else {
+            System.out.printf(ageBelow18, age);
+        }
+        age += 3;
+        if (age >= 18) {
+            System.out.printf(ageAbove18, age);
+        } else {
+            System.out.printf(ageBelow18, age);
+        }
     }
 }
