@@ -48,12 +48,10 @@ public class Main {
         String tempAbove = "На улице %d град. Сегодня тепло, можно идти без шапки.\n";
         String tempBelow = "На улице %d град. На улице холодно, нужно надеть шапку.\n";
         short tempAir = 5;
-        if (tempAir > 5) {
+        if (tempAir >= 5) {
             System.out.printf(tempAbove, tempAir);
         } else if (tempAir < 5) {
             System.out.printf(tempBelow, tempAir);
-        } else {
-            System.out.printf("На улице %d грудусов. Надо спросить маму одевать шапку или нет.\n", tempAir);
         }
     }
 
@@ -72,7 +70,7 @@ public class Main {
         String speedBelow = "Если скорость %d, то можно ездить спокойно.\n";
         if (speed > 60) {
             System.out.printf(speedAbove, speed);
-        } else if (speed <= 60) {
+        } else {
             System.out.printf(speedBelow, speed);
         }
     }
@@ -112,25 +110,27 @@ public class Main {
 
     private static void Task6() {
         System.out.println("\n==========[ Task 6. ]==========");
-        byte placeTotal = 120;
+        byte placeTotal = 102;
         byte placeSit = 60;
         int placeStand = placeTotal - placeSit;
-        byte occupiedPlaceSit = 80;
-        byte occupiedPlaceStand = 70;
-        if ((placeSit - occupiedPlaceSit) > 0) {
-            System.out.printf("В вагоне осталось %d сидячих мест.\n", placeSit - occupiedPlaceSit);
-        } else if (placeSit - occupiedPlaceSit < 0) {
-            System.out.printf("В вагоне не хватает %d сидячих мест.\n", (occupiedPlaceSit - placeSit));
+
+        byte totaloccupiedPlace = 61;
+
+        int occupiedPlaceSit = placeSit;
+        int occupiedPlaceStand = 0;
+
+        if (totaloccupiedPlace > placeTotal) {
+            System.out.println("Вагон забит мест нет.");
         } else {
-            System.out.println("Все сидячие места в вагоне заняты.");
+            if (placeSit > totaloccupiedPlace) {
+                occupiedPlaceSit = totaloccupiedPlace;
+            } else {
+                occupiedPlaceStand = totaloccupiedPlace - occupiedPlaceSit;
+            }
+            System.out.printf("В вагоне занято %d сидячих мест, и занято %d стоячих мест.\n", occupiedPlaceSit, occupiedPlaceStand);
+            System.out.printf("В вагоне свободно %d сидячих мест, и %d стоячих мест.\n", placeSit - occupiedPlaceSit, placeStand - occupiedPlaceStand);
         }
-        if ((placeStand - occupiedPlaceStand) > 0) {
-            System.out.printf("В вагоне осталось %d стоячих мест.\n", placeStand - occupiedPlaceStand);
-        } else if (placeStand - occupiedPlaceStand < 0) {
-            System.out.printf("В вагоне не хватает %d стоячих мест.\n", (occupiedPlaceStand - placeStand));
-        } else {
-            System.out.println("Все стоячие места в вагоне заняты");
-        }
+
     }
 
     private static void Task7() {
@@ -146,6 +146,6 @@ public class Main {
         } else {
             max = three;
         }
-        System.out.printf("Максимальное число из %d, %d, %d равно %d\n",one, two, three, max);
+        System.out.printf("Максимальное число из %d, %d, %d равно %d\n", one, two, three, max);
     }
 }
