@@ -112,23 +112,45 @@ public class Main {
         System.out.println("\n==========[ Task 6. ]==========");
         byte placeTotal = 102;
         byte placeSit = 60;
+        boolean sit = false;
+        boolean stand = false;
+        //расчет количества стоячих мест
         int placeStand = placeTotal - placeSit;
 
-        byte totaloccupiedPlace = 61;
+        //ввод данных: сколько занято сидячих и стоячих мест
+        int occupiedPlaceSit = 60;
+        int occupiedPlaceStand = 23;
 
-        int occupiedPlaceSit = placeSit;
-        int occupiedPlaceStand = 0;
+        //всего занято мест
+        int totalOccupiedPlace = occupiedPlaceStand + occupiedPlaceSit;
 
-        if (totaloccupiedPlace > placeTotal) {
+        //я считаю вагон забит когда стоячие и сидячие места в сумме больше или равны вместительности вагона
+        //ситуация когда превышен порог только сидячих или стоячих мест я обрабатываю отдельно и вывожу на консоль
+        //соответсвующие сообщения
+
+        if (totalOccupiedPlace >= placeTotal) {
             System.out.println("Вагон забит мест нет.");
         } else {
-            if (placeSit > totaloccupiedPlace) {
-                occupiedPlaceSit = totaloccupiedPlace;
+            if (placeSit > occupiedPlaceSit) {
+                System.out.printf("В вагоне осталось %d сидячих мест.\n", placeSit - occupiedPlaceSit);
+                sit = true;
+            } else if (placeSit < occupiedPlaceSit) {
+                System.out.printf("В вагоне не хватает %d сидячих мест.\n", occupiedPlaceSit - placeSit);
             } else {
-                occupiedPlaceStand = totaloccupiedPlace - occupiedPlaceSit;
+                System.out.printf("Все сидячие места (%d места) в вагоне заняты.\n", occupiedPlaceSit);
             }
-            System.out.printf("В вагоне занято %d сидячих мест, и занято %d стоячих мест.\n", occupiedPlaceSit, occupiedPlaceStand);
-            System.out.printf("В вагоне свободно %d сидячих мест, и %d стоячих мест.\n", placeSit - occupiedPlaceSit, placeStand - occupiedPlaceStand);
+            if (placeStand > occupiedPlaceStand) {
+                System.out.printf("В вагоне осталось %d стоячих мест.\n", placeStand - occupiedPlaceStand);
+                stand = true;
+            } else if (placeStand < occupiedPlaceStand) {
+                System.out.printf("В вагоне не хватает %d стоячих мест.\n", occupiedPlaceStand - placeStand);
+            } else {
+                System.out.printf("Все стоячие места (%d места) в вагоне заняты", occupiedPlaceStand);
+            }
+            if (stand == true && sit == true) {
+                System.out.printf("В вагоне всего сбоводных мест -- %d, общее количество занятых мест -- %d.\n",
+                        (placeTotal - occupiedPlaceSit - occupiedPlaceStand), occupiedPlaceSit + occupiedPlaceStand);
+            }
         }
 
     }
