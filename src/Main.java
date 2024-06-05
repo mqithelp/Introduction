@@ -2,6 +2,7 @@ public class Main {
     public static void main(String[] args) {
         Task1_2();
         Task3();
+        Task4();
     }
 
     private static void Task1_2() {
@@ -45,5 +46,20 @@ public class Main {
             System.out.println("Введен некорректный год.");
         }
 
+    }
+
+    private static void Task4() {
+        System.out.printf("\n==========[ Task 4 ]==========\n");
+        int deliveryDistance = 95;
+        int dayDelivery = 0;
+        if (deliveryDistance < 20) {
+            System.out.printf("Потребуется дней: %d\n", dayDelivery+1);
+        } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
+            System.out.printf("Потребуется дней: %d\n", dayDelivery+2);
+        } else if (deliveryDistance >= 60 && deliveryDistance < 100) {
+            System.out.printf("Потребуется дней: %d\n", dayDelivery+3);
+        } else {
+            System.out.println("Доставки нет.");
+        }
     }
 }
