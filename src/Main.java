@@ -10,11 +10,9 @@ public class Main {
         System.out.printf("\n==========[ Task 1 ]==========\n");
         short clientOS = 0;
 
-        if ("iOS".equals("iOS")) {
-            clientOS = 0;
+        if (clientOS == 0) {
             System.out.printf("Установите версию приложения для iOS по ссылке.\n");
-        } else if ("iOS".equals("Android")) {
-            clientOS = 1;
+        } else  {
             System.out.printf("Установите версию приложения для Android по ссылке.\n");
         }
 
@@ -51,7 +49,7 @@ public class Main {
 
     private static void Task4() {
         System.out.printf("\n==========[ Task 4 ]==========\n");
-        int deliveryDistance = 95;
+        int deliveryDistance = 25;
         int dayDelivery = 0;
         if (deliveryDistance < 20) {
             dayDelivery += 1;
