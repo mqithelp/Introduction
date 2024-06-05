@@ -53,13 +53,16 @@ public class Main {
         int deliveryDistance = 95;
         int dayDelivery = 0;
         if (deliveryDistance < 20) {
-            System.out.printf("Потребуется дней: %d\n", dayDelivery+1);
+            dayDelivery += 1;
         } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            System.out.printf("Потребуется дней: %d\n", dayDelivery+2);
+            dayDelivery += 2;
         } else if (deliveryDistance >= 60 && deliveryDistance < 100) {
-            System.out.printf("Потребуется дней: %d\n", dayDelivery+3);
+            dayDelivery += 3;
         } else {
             System.out.println("Доставки нет.");
+        }
+        if (dayDelivery > 0) {
+            System.out.printf("Потребуется дней: %d\n",dayDelivery);
         }
     }
 }
