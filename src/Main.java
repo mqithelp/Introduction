@@ -49,13 +49,13 @@ public class Main {
 
     private static void Task4() {
         System.out.printf("\n==========[ Task 4 ]==========\n");
-        int deliveryDistance = 25;
+        int deliveryDistance = 100;
         int dayDelivery = 0;
-        if (deliveryDistance < 20) {
+        if (deliveryDistance <= 20) {
             dayDelivery += 1;
-        } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
+        } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
             dayDelivery += 2;
-        } else if (deliveryDistance >= 60 && deliveryDistance < 100) {
+        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
             dayDelivery += 3;
         } else {
             System.out.println("Доставки нет.");
