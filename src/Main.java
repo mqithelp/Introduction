@@ -7,6 +7,18 @@ public class Main {
         Task5();
         Task6();
         Task7();
+        Task8();
+    }
+
+    private static void Task8() {
+        System.out.println("\n\n==========[ Task 8 ]==========");
+        int save = 29000;
+        int totalSave = 0;
+        for (int i = 1; i <= 12; i++) {
+            totalSave += save;
+            System.out.printf("«Месяц %d, сумма накоплений равна %d рублей.\n", i, totalSave);
+        }
+
     }
 
     private static void Task7() {
