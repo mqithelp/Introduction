@@ -9,12 +9,19 @@ public class Main {
 
     private static void Task5() {
         System.out.println("\n\n==========[ Task 5 ]==========");
-
+        int j = 0;
+        for (int i = 1904; i <= 2096; i += 4) {
+            if (j % 10 == 0 && j != 0) {
+                System.out.println();
+            }
+            j++;
+            System.out.printf("%d\t", i);
+        }
     }
 
     private static void Task4() {
         System.out.println("\n\n==========[ Task 4 ]==========");
-        for (int i = 10; i >= -10 ; i--) {
+        for (int i = 10; i >= -10; i--) {
             System.out.printf("%d\t", i);
         }
     }
