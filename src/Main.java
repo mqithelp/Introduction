@@ -3,7 +3,20 @@ public class Main {
         Task1();
         Task2();
         Task3();
+        Task4();
+        Task5();
+    }
 
+    private static void Task5() {
+        System.out.println("\n\n==========[ Task 5 ]==========");
+
+    }
+
+    private static void Task4() {
+        System.out.println("\n\n==========[ Task 4 ]==========");
+        for (int i = 10; i >= -10 ; i--) {
+            System.out.printf("%d\t", i);
+        }
     }
 
     private static void Task3() {
