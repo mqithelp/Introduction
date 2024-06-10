@@ -6,6 +6,14 @@ public class Main {
         Task4();
         Task5();
         Task6();
+        Task7();
+    }
+
+    private static void Task7() {
+        System.out.println("\n\n==========[ Task 7 ]==========");
+        for (int i = 1; i <= 512; i *= 2) {
+            System.out.printf("%d\t", i);
+        }
     }
 
     private static void Task6() {
