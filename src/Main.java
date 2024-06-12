@@ -4,17 +4,33 @@ public class Main {
         Task2();
         Task3();
         Task4();
+        Task5();
+    }
+
+    private static void Task5() {
+        System.out.println("\n\n==========[ Task 5 ]==========");
+        int targetCash = 12_000_000;
+        int percentBank = 7;
+        float percentMount = percentBank / 12f;
+        int mount = 1;
+        int totalCash = 15_000;
+        while (totalCash < targetCash) {
+            totalCash += totalCash * percentMount / 100;
+            if (mount++ % 6 == 0) {
+                System.out.printf("В %d месяце накоплено %d руб.\n", mount-1, totalCash);
+            }
+        }
     }
 
     private static void Task4() {
         System.out.println("\n\n==========[ Task 4 ]==========");
         int targetCash = 12_000_000;
         int percentBank = 7;
-        float percentMount = percentBank/12f;
+        float percentMount = percentBank / 12f;
         int mount = 1;
         int totalCash = 15_000;
         while (totalCash < targetCash) {
-            totalCash += totalCash * percentMount/100;
+            totalCash += totalCash * percentMount / 100;
             System.out.printf("В %d месяце накоплено %d руб.\n", mount++, totalCash);
         }
     }
