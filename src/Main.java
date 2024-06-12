@@ -7,6 +7,21 @@ public class Main {
         Task5();
         Task6();
         Task7();
+        Task8();
+    }
+
+    private static void Task8() {
+        System.out.println("\n\n==========[ Task 8 ]==========");
+        int currentYear = 2024;
+        int yearBefore = currentYear - 200;
+        int yearAbove = currentYear + 100;
+        int yearCount = yearBefore;
+        while (yearCount < yearAbove) {
+            if (yearCount % 79 == 0 ) {
+                System.out.println(yearCount);
+            }
+            yearCount++;
+        }
     }
 
     private static void Task7() {
