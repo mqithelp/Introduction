@@ -3,6 +3,20 @@ public class Main {
         Task1();
         Task2();
         Task3();
+        Task4();
+    }
+
+    private static void Task4() {
+        System.out.println("\n\n==========[ Task 4 ]==========");
+        int targetCash = 12_000_000;
+        int percentBank = 7;
+        float percentMount = percentBank/12f;
+        int mount = 1;
+        int totalCash = 15_000;
+        while (totalCash < targetCash) {
+            totalCash += totalCash * percentMount/100;
+            System.out.printf("В %d месяце накоплено %d руб.\n", mount++, totalCash);
+        }
     }
 
     private static void Task3() {
