@@ -107,9 +107,10 @@ public class Main {
         int incCash = 15_000;
         int month = 0;
         int monthCash = 0;
+        int percentMount = 1;
         while (totalCash > monthCash) {
             month++;
-            monthCash += incCash;
+            monthCash += (monthCash * percentMount / 100) + incCash;
             System.out.printf("Месяц %d, сумма накоплений равна %d рублей.\n", month, monthCash);
         }
 
