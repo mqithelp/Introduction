@@ -5,6 +5,35 @@ public class Main {
         Task3();
         Task4();
         Task5();
+        Task6();
+        Task7();
+    }
+
+    private static void Task7() {
+        System.out.println("\n\n==========[ Task 7 ]==========");
+        int fridayDay = 4;
+        int fridayCount = 0;
+        for (int i = 1; i <= 31; i++) {
+            if (fridayDay + fridayCount * 7 == i) {
+                System.out.printf("Сегодня пятница, %d-е число. Необходимо подготовить отчет.\n", i);
+                fridayCount++;
+            }
+        }
+    }
+
+    private static void Task6() {
+        System.out.println("\n\n==========[ Task 6 ]==========");
+        int percentBank = 7;
+        float percentMount = percentBank / 12f;
+        int totalCash = 15_000;
+        for (int i = 1; i <= 9 * 12; i++) {
+            totalCash += (int) (totalCash * percentMount / 100);
+            if (i % 6 == 0) {
+                System.out.printf("В %d месяце накоплено %d руб.\n", i, totalCash);
+            }
+
+
+        }
     }
 
     private static void Task5() {
@@ -15,9 +44,9 @@ public class Main {
         int mount = 1;
         int totalCash = 15_000;
         while (totalCash < targetCash) {
-            totalCash += totalCash * percentMount / 100;
+            totalCash += (int) (totalCash * percentMount / 100);
             if (mount++ % 6 == 0) {
-                System.out.printf("В %d месяце накоплено %d руб.\n", mount-1, totalCash);
+                System.out.printf("В %d месяце накоплено %d руб.\n", mount - 1, totalCash);
             }
         }
     }
@@ -30,7 +59,7 @@ public class Main {
         int mount = 1;
         int totalCash = 15_000;
         while (totalCash < targetCash) {
-            totalCash += totalCash * percentMount / 100;
+            totalCash += (int) (totalCash * percentMount / 100);
             System.out.printf("В %d месяце накоплено %d руб.\n", mount++, totalCash);
         }
     }
