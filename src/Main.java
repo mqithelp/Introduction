@@ -1,116 +1,130 @@
 public class Main {
     public static void main(String[] args) {
-        Task1();
-        Task2();
-        Task3();
-        Task4();
-        Task5();
-        Task6();
-        Task7();
-        Task8();
+        task1();
+        task2();
+        task3();
+        task4();
+        task5();
+        task6();
+        task7();
+        task8();
 
     }
 
-    private static void Task8() {
+    private static void task8() {
+        final int CYCLE_PERIOD = 79;
+
         System.out.println("\n\n==========[ Task 8 ]==========");
-        int currentYear = 2024;
-        int yearBefore = currentYear - 200;
-        int yearAbove = currentYear + 100;
-        int yearCount = yearBefore;
-        while (yearCount < yearAbove) {
-            if (yearCount % 79 == 0 ) {
+        final int CURRENT_YEAR = 2024;
+        final int YEAR_BEFORE = CURRENT_YEAR - 200;
+        final int YEAR_ABOVE = CURRENT_YEAR + 100;
+        int yearCount = YEAR_BEFORE;
+        while (yearCount < YEAR_ABOVE) {
+            if (yearCount % CYCLE_PERIOD == 0) {
                 System.out.println(yearCount);
             }
             yearCount++;
         }
     }
 
-    private static void Task7() {
+    private static void task7() {
         System.out.println("\n\n==========[ Task 7 ]==========");
-        int fridayDay = 4;
+        final int DAY_OF_WEEK = 7;
+        final int DAY_OF_MONTH = 31;
+        final int FRIDAY_DAY = 4;
         int fridayCount = 0;
-        for (int i = 1; i <= 31; i++) {
-            if (fridayDay + fridayCount * 7 == i) {
+        for (int i = 1; i <= DAY_OF_MONTH; i++) {
+            if (FRIDAY_DAY + fridayCount * DAY_OF_WEEK == i) {
                 System.out.printf("Сегодня пятница, %d-е число. Необходимо подготовить отчет.\n", i);
                 fridayCount++;
             }
         }
     }
 
-    private static void Task6() {
+    private static void task6() {
         System.out.println("\n\n==========[ Task 6 ]==========");
-        int percentBank = 7;
-        float percentMount = percentBank / 12f;
+        final int PERCENT_BANK = 7;
+        final int TOTAL_YEAR = 9;
+        final int MONTHS_OF_YEAR = 12;
+        float percentMount = PERCENT_BANK / 12f;
         int totalCash = 15_000;
-        for (int i = 1; i <= 9 * 12; i++) {
+
+        for (int i = 1; i <= MONTHS_OF_YEAR * TOTAL_YEAR; i++) {
             totalCash += (int) (totalCash * percentMount / 100);
             if (i % 6 == 0) {
                 System.out.printf("В %d месяце накоплено %d руб.\n", i, totalCash);
             }
-
-
         }
     }
 
-    private static void Task5() {
+    private static void task5() {
         System.out.println("\n\n==========[ Task 5 ]==========");
-        int targetCash = 12_000_000;
-        int percentBank = 7;
-        float percentMount = percentBank / 12f;
+        final int STEP_PERIOD = 6;
+        final int TARGET_CASH = 12_000_000;
+        final int ANNUAL_INTEREST_RATE = 7;
+        float monthlyInterestRate = ANNUAL_INTEREST_RATE / 12f;
         int mount = 1;
-        int totalCash = 15_000;
-        while (totalCash < targetCash) {
-            totalCash += (int) (totalCash * percentMount / 100);
-            if (mount++ % 6 == 0) {
-                System.out.printf("В %d месяце накоплено %d руб.\n", mount - 1, totalCash);
+        int cashInvest = 15_000;
+        while (cashInvest < TARGET_CASH) {
+            cashInvest += (int) (cashInvest * monthlyInterestRate / 100);
+            if (mount++ % STEP_PERIOD == 0) {
+                System.out.printf("В %d месяце накоплено %d руб.\n", mount - 1, cashInvest);
             }
         }
     }
 
-    private static void Task4() {
+    private static void task4() {
         System.out.println("\n\n==========[ Task 4 ]==========");
-        int targetCash = 12_000_000;
-        int percentBank = 7;
-        float percentMount = percentBank / 12f;
+        final int TARGET_CASH = 12_000_000;
+        final int ANNUAL_INTEREST_RATE = 7;
+        float percentMount = ANNUAL_INTEREST_RATE / 12f;
         int mount = 1;
         int totalCash = 15_000;
-        while (totalCash < targetCash) {
+        while (totalCash < TARGET_CASH) {
             totalCash += (int) (totalCash * percentMount / 100);
             System.out.printf("В %d месяце накоплено %d руб.\n", mount++, totalCash);
         }
     }
 
-    private static void Task3() {
+    private static void task3() {
         System.out.println("\n\n==========[ Task 3 ]==========");
-        int totalY = 12_000_000;
-        for (int i = 1; i <= 10; i++) {
-            totalY += totalY / 1000 * 17 - totalY / 1000 * 8;
-            System.out.printf("Год %d, численность населения составляет %d.\n", i, totalY);
+        final int BIRTH_RATE = 17;
+        final int DEATH_RATE = 8;
+        final int PER_1000 = 1000;
+        final int YEAR = 10;
+        int populationY = 12_000_000;
+
+        for (int i = 1; i <= YEAR; i++) {
+            populationY += populationY / PER_1000 * BIRTH_RATE - populationY / PER_1000 * DEATH_RATE;
+            System.out.printf("Год %d, численность населения составляет %d.\n", i, populationY);
         }
     }
 
-    private static void Task2() {
+    private static void task2() {
         System.out.println("\n\n==========[ Task 2 ]==========");
-        int i = 1;
-        while (i <= 10) {
+        final int START_NUMBER = 1;
+        final int END_NUMBER = 10;
+        int i = START_NUMBER;
+        while (i <= END_NUMBER) {
             System.out.printf("%d\t", i++);
         }
         System.out.println();
-        for (int j = 10; j > 0; j--) {
+        for (int j = END_NUMBER; j > 0; j--) {
             System.out.printf("%d\t", j);
         }
     }
 
-    private static void Task1() {
+    private static void task1() {
         System.out.println("\n\n==========[ Task 1 ]==========");
-        int totalCash = 2_459_000;
-        int incCash = 15_000;
+
+        final int SAVINGS_GOAL = 2_459_000;
+        final int MONTHLY_SAVINGS = 15_000;
         int month = 0;
         int monthCash = 0;
-        int percentMount = 1;
-        while (totalCash > monthCash) {
+        final float MONTHLY_INTEREST_RATE = 1 / 100f;
+        while (SAVINGS_GOAL > monthCash) {
             month++;
-            monthCash += (monthCash * percentMount / 100) + incCash;
+            monthCash = monthCash + ((int) (monthCash * MONTHLY_INTEREST_RATE) + MONTHLY_SAVINGS);
             System.out.printf("Месяц %d, сумма накоплений равна %d рублей.\n", month, monthCash);
         }
 
