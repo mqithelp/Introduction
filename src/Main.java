@@ -16,22 +16,21 @@ public class Main {
         System.out.println(Arrays.toString(arraysTwo));
         System.out.println(Arrays.toString(arraysThree));
         System.out.println("\n==========[ Task 3 ]==========");
-        for (int i = arraysOne.length-1; i > 0; i--) {
-            System.out.print(arraysOne[i]+", ");
+        for (int i = arraysOne.length - 1; i > 0; i--) {
+            System.out.print(arraysOne[i] + ", ");
         }
         System.out.println(arraysOne[0]);
-        for (int i = arraysTwo.length-1; i > 0; i--) {
+        for (int i = arraysTwo.length - 1; i > 0; i--) {
             System.out.print(arraysTwo[i] + ", ");
         }
         System.out.println(arraysTwo[0]);
         System.out.println("\n==========[ Task 4 ]==========");
         for (int i = 0; i < arraysOne.length; i++) {
             if (arraysOne[i] % 2 != 0) {
-                arraysOne[i] +=1;
+                arraysOne[i] += 1;
             }
         }
         System.out.println(Arrays.toString(arraysOne));
     }
-
 
 }
