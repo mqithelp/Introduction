@@ -4,11 +4,23 @@ public class Main {
         task1(records);
         task2(records);
         task3(records);
+        task4();
+    }
+
+    private static void task4() {
+        System.out.println("\n==========[ Task 4 ]==========");
+        char[] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
+        for (int i : reverseFullName) System.out.print((char) i);
+        System.out.println();
+        for (int i = reverseFullName.length - 1; i >= 0; i--) {
+            System.out.print(reverseFullName[i]);
+        }
+        System.out.println();
     }
 
     private static void task3(int[] records) {
         System.out.println("\n==========[ Task 3 ]==========");
-        final int  WEAK_OF_MOUNTH = records.length;
+        final int WEAK_OF_MOUNTH = records.length;
         int sum = 0;
         for (int i : records) sum += i;
         float avg_money = (float) sum / WEAK_OF_MOUNTH;
