@@ -1,36 +1,31 @@
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
-        tasksAllInOne();
+        task1();
+        task2();
+        task3();
+
     }
 
-    private static void tasksAllInOne() {
+    private static void task3() {
+        System.out.println("\n\n==========[ Task 3 ]==========");
+        String fullname = "Иванов Семён Семёнович";
+        System.out.println("Данные Ф. И. О. сотрудника — " + fullname.replace('ё','e'));
+    }
+
+    private static void task2() {
+        System.out.println("\n\n==========[ Task 2 ]==========");
+        String fullName ="Ivanov Ivan Ivanovich";
+        System.out.println("Данные Ф. И. О. сотрудника для заполнения отчета — " + fullName.toUpperCase());
+    }
+
+    private static void task1() {
         System.out.println("\n\n==========[ Task 1 ]==========");
-        System.out.println("Создали три массива");
-        int[] arraysOne = new int[]{1, 2, 3};
-        double[] arraysTwo = {1.57, 7.654, 9.986};
-        boolean[] arraysThree = new boolean[]{true, false, false, true};
-        System.out.println("\n==========[ Task 2 ]==========");
-        System.out.println(Arrays.toString(arraysOne));
-        System.out.println(Arrays.toString(arraysTwo));
-        System.out.println(Arrays.toString(arraysThree));
-        System.out.println("\n==========[ Task 3 ]==========");
-        for (int i = arraysOne.length - 1; i > 0; i--) {
-            System.out.print(arraysOne[i] + ", ");
-        }
-        System.out.println(arraysOne[0]);
-        for (int i = arraysTwo.length - 1; i > 0; i--) {
-            System.out.print(arraysTwo[i] + ", ");
-        }
-        System.out.println(arraysTwo[0]);
-        System.out.println("\n==========[ Task 4 ]==========");
-        for (int i = 0; i < arraysOne.length; i++) {
-            if (arraysOne[i] % 2 != 0) {
-                arraysOne[i] += 1;
-            }
-        }
-        System.out.println(Arrays.toString(arraysOne));
+        String firstName = "Ivan";
+        String middleName = "Ivanovich";
+        String lastName = "Ivanov";
+        String fullName = lastName + " " + firstName + " " + middleName;
+        System.out.println("Ф. И. О. сотрудника — " + fullName);
+
     }
 
 }
