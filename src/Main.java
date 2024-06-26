@@ -1,10 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        task1(1976);
+        calculateLeapYear(1976); //Task 1
+
 
     }
 
-    private static void task1(int year) {
+    private static void calculateLeapYear(int year) {
         printNumberTask(1);
             if (year > 1584 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))) {
                 System.out.printf("%d год является високосным.\n", year);
