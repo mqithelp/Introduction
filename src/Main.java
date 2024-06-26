@@ -2,11 +2,24 @@ public class Main {
     public static void main(String[] args) {
         calculateLeapYear(1976); //Task 1
         downloadApp(2015,0); //Task 2
-        sendCard(95);
+        sendCard(95); //Task 3
     }
 
     private static void sendCard(int deliveryDistance) {
-
+        printNumberTask(3);
+        int dayDelivery = 0;
+        if (deliveryDistance <= 20) {
+            dayDelivery += 1;
+        } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
+            dayDelivery += 2;
+        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
+            dayDelivery += 3;
+        } else {
+            System.out.println("Доставки нет.");
+        }
+        if (dayDelivery > 0) {
+            System.out.printf("Потребуется дней: %d\n",dayDelivery);
+        }
     }
 
     private static void downloadApp(int clientDeviceYear, int clientOS) {
