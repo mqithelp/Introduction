@@ -1,36 +1,61 @@
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
-        tasksAllInOne();
+        calculateLeapYear(1976); //Task 1
+        downloadApp(2015, 0); //Task 2
+
+        //Task 3
+        int dayDelivery = sendCard(95);
+        if (dayDelivery == 0) {
+            System.out.println("Доставки нет.");
+        } else {
+            System.out.printf("Потребуется дней: %d\n", dayDelivery);
+        }
     }
 
-    private static void tasksAllInOne() {
-        System.out.println("\n\n==========[ Task 1 ]==========");
-        System.out.println("Создали три массива");
-        int[] arraysOne = new int[]{1, 2, 3};
-        double[] arraysTwo = {1.57, 7.654, 9.986};
-        boolean[] arraysThree = new boolean[]{true, false, false, true};
-        System.out.println("\n==========[ Task 2 ]==========");
-        System.out.println(Arrays.toString(arraysOne));
-        System.out.println(Arrays.toString(arraysTwo));
-        System.out.println(Arrays.toString(arraysThree));
-        System.out.println("\n==========[ Task 3 ]==========");
-        for (int i = arraysOne.length - 1; i > 0; i--) {
-            System.out.print(arraysOne[i] + ", ");
+    private static int sendCard(int deliveryDistance) {
+        printNumberTask(3);
+        int dayDelivery = 0;
+        if (deliveryDistance <= 20) {
+            dayDelivery += 1;
+        } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
+            dayDelivery += 2;
+        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
+            dayDelivery += 3;
         }
-        System.out.println(arraysOne[0]);
-        for (int i = arraysTwo.length - 1; i > 0; i--) {
-            System.out.print(arraysTwo[i] + ", ");
-        }
-        System.out.println(arraysTwo[0]);
-        System.out.println("\n==========[ Task 4 ]==========");
-        for (int i = 0; i < arraysOne.length; i++) {
-            if (arraysOne[i] % 2 != 0) {
-                arraysOne[i] += 1;
+        return dayDelivery;
+    }
+
+    private static void downloadApp(int clientDeviceYear, int clientOS) {
+        printNumberTask(2);
+        if (clientDeviceYear < 2015) {
+            if (clientOS == 0) {
+                System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+            } else {
+                System.out.println("Установите облегченную версию приложения для Android по ссылке");
+            }
+        } else {
+            if (clientOS == 0) {
+                System.out.println("Установите версию приложения для iOS по ссылке");
+            } else {
+                System.out.println("Установите версию приложения для Android по ссылке");
             }
         }
-        System.out.println(Arrays.toString(arraysOne));
     }
 
+    private static void calculateLeapYear(int year) {
+        printNumberTask(1);
+        if (year > 1584 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))) {
+            System.out.printf("%d год является високосным.\n", year);
+        } else if (year > 1584) {
+            System.out.printf("%d год не является високосным.\n", year);
+        } else {
+            System.out.println("Введен некорректный год.");
+        }
+
+    }
+
+    private static void printNumberTask(int numberTask) {
+        System.out.printf("\n==========[ Task %d ]==========\n", numberTask);
+    }
 }
+
