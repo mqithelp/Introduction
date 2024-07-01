@@ -1,12 +1,12 @@
 public class Book {
+
     private String title;
     private Author author;
+    private int publicationYear;
 
     public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
-
-    private int publicationYear;
 
     public String getTitle() {
         return title;
@@ -24,5 +24,12 @@ public class Book {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
+    }
+
+    @Override
+    public String toString() {
+        return "Книга \'" + title + '\'' +
+                " написана автором: " + author +
+                " в " + publicationYear +" году.";
     }
 }

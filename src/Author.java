@@ -1,17 +1,22 @@
 public class Author {
-    String name;
-    String fullName;
+    private String name;
+    private String surname;
 
     public String getName() {
         return name;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getSurname() {
+        return surname;
     }
 
-    public Author(String name, String fullName) {
+    public Author(String name, String surname) {
         this.name = name;
-        this.fullName = fullName;
+        this.surname = surname;
+    }
+
+    @Override
+    public String toString() {
+        return name + ' ' + surname;
     }
 }
