@@ -1,8 +1,10 @@
+import java.util.Objects;
+
 public class Employee {
     public static int countId = 0;
     private int id;
-    private String name;
     private String surname;
+    private String name;
     private String patronymic;
     private int department;
     private int salary;
@@ -15,14 +17,14 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Employee(String name, String surname, String patronymic, int department, int salary) {
+    public Employee(String surname, String name, String patronymic, int department, int salary) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.department = department;
         this.salary = salary;
-        countId++;
         id = countId;
+        countId++;
     }
 
     public int getId() {
@@ -47,5 +49,28 @@ public class Employee {
 
     public int getSalary() {
         return salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id && department == employee.department && salary == employee.salary && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(patronymic, employee.patronymic);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, surname, patronymic, department, salary);
+    }
+
+    @Override
+    public String toString() {
+        return "ФИО: " +
+                 surname + ' ' +
+                 name + ' ' +
+                 patronymic +
+                ". Отдел=" + department +
+                ". Зарплата=" + salary;
     }
 }
