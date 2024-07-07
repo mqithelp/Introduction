@@ -73,4 +73,7 @@ public class Employee {
                 ". Отдел=" + department +
                 ". Зарплата=" + salary;
     }
+    public String getFullName(){
+        return surname + ' ' + name + ' ' + patronymic;
+    }
 }
