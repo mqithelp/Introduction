@@ -2,77 +2,151 @@
 public class Main {
     public static void main(String[] args) {
         Employee[] employee = new Employee[10];
-        FullArray(employee);
-        GetAllPersons(employee);
-        System.out.println("Общая зарплата за месяц составлет: " + GetTotalSallaryMounth(employee));
-        GetPersonMinSallary(employee);
-        System.out.println("Сотрудник с минимальной зп: " + employee[GetPersonMinSallary(employee)]);
-        System.out.println("Сотрудник с максимальной зп: " + employee[GetPersonMaxSallary(employee)]);
-        System.out.println("Средняя зарплата за месяц всех сотрудников: " + GetAverageSallary(employee));
-        PrintFullNames(employee);
-        indexSalary(employee, 10);
-        GetAllPersons(employee);
 
+        fullArray(employee); //Заполняем массив
+
+        System.out.println("==========[ Базовая сложность ]==========");
+        printAllPersonsData(employee);
+        System.out.println("Общая зарплата за месяц составлет: "
+                + getTotalSalaryMonth(employee));
+        System.out.println("Сотрудник с минимальной зп: "
+                + employee[getPersonMinSalary(employee)]);
+        System.out.println("Сотрудник с максимальной зп: "
+                + employee[getPersonMaxSalary(employee)]);
+        System.out.println("Средняя зарплата за месяц всех сотрудников: "
+                + getAverageSalary(employee));
+        printFullNames(employee);
+
+        System.out.println("==========[ Повышенная сложность ]==========");
+        indexSalary(employee, 7);
+        printAllPersonsData(employee);
+        int department = 4; //переменная для задания повышенной сложности
+
+        System.out.printf("Сотрудники %d отдела. \n", department);
+        System.out.println("Сотрудник с минимальной зп в отделе: " +
+                employee[getPersonMinSalary(employee, department)]);
+        System.out.println("Сотрудник с максимальной зп в отделе: " +
+                employee[getPersonMaxSalary(employee, department)]);
+        System.out.println("Общая зарплата за месяц отдела " + department + " составлет: "
+                + getTotalSalaryMonth(employee, department));
+        System.out.println("Средняя зарплата за месяц сотрудников отдела " +
+                department + ": " + getAverageSalary(employee, department));
+//        indexSalary(employee, 10,department);
+//        printAllPersonsData(employee);
+//        System.out.println("------");
+//        printAllPersonsData(employeeDepartment);
     }
 
     private static void indexSalary(Employee[] employee, int indexPercent) {
-        for (int i = 0; i < employee.length; i++) {
-            int tmp = employee[i].getSalary();
-            tmp += (int) (tmp * indexPercent / 100);
-            employee[i].setSalary(tmp);
+        for (Employee value : employee) {
+            int tmp = value.getSalary();
+            tmp += tmp * indexPercent / 100;
+            value.setSalary(tmp);
         }
     }
 
-
-    private static void PrintFullNames(Employee[] employee) {
-        for (int i = 0; i < employee.length; i++) {
-            System.out.println(employee[i].getFullName());
-        }
-    }
-
-    private static int GetAverageSallary(Employee[] employee) {
-        return (int) (GetTotalSallaryMounth(employee) / employee.length);
-    }
-
-    private static int GetPersonMaxSallary(Employee[] employee) {
-        int maxSallary = employee[0].getSalary();
-        int indexMaxSallary = 0;
-        for (int i = 1; i < employee.length; i++) {
-            if (employee[i].getSalary() > maxSallary) {
-                maxSallary = employee[i].getSalary();
-                indexMaxSallary = i;
+    private static void indexSalary(Employee[] employee, int indexPercent, int departmentNum) {
+        for (Employee value : employee) {
+            if (value.getDepartment() == departmentNum) {
+                int tmp = value.getSalary();
+                tmp += tmp * indexPercent / 100;
+                value.setSalary(tmp);
             }
         }
-        return indexMaxSallary;
     }
 
-    private static int GetPersonMinSallary(Employee[] employee) {
-        int minSallary = employee[0].getSalary();
-        int indexMinSallary = 0;
+
+    private static void printFullNames(Employee[] employee) {
+        for (Employee value : employee) {
+            System.out.println(value.getFullName());
+        }
+    }
+
+    private static int getAverageSalary(Employee[] employee) {
+        return getTotalSalaryMonth(employee) / employee.length;
+    }
+
+    private static int getAverageSalary(Employee[] employee, int department) {
+
+        return getTotalSalaryMonth(employee,department) / Employee.getPersonsDepartment(department);
+    }
+
+
+    private static int getPersonMaxSalary(Employee[] employee) {
+        int maxSalary = employee[0].getSalary();
+        int indexMaxSalary = 0;
         for (int i = 1; i < employee.length; i++) {
-            if (employee[i].getSalary() < minSallary) {
-                minSallary = employee[i].getSalary();
-                indexMinSallary = i;
+            if (employee[i].getSalary() > maxSalary) {
+                maxSalary = employee[i].getSalary();
+                indexMaxSalary = i;
             }
         }
-        return indexMinSallary;
+        return indexMaxSalary;
     }
 
-    private static int GetTotalSallaryMounth(Employee[] employee) {
+    private static int getPersonMaxSalary(Employee[] employee, int department) {
+        int maxSalary = employee[0].getSalary();
+        int indexMaxSalary = 0;
+        for (int i = 1; i < employee.length; i++) {
+            if (employee[i].getDepartment() == department && employee[i].getSalary() > maxSalary) {
+                maxSalary = employee[i].getSalary();
+                indexMaxSalary = i;
+            }
+        }
+        return indexMaxSalary;
+    }
+
+
+    private static int getPersonMinSalary(Employee[] employee) {
+        int minSalary = employee[0].getSalary();
+        int indexMinSalary = 0;
+        for (int i = 1; i < employee.length; i++) {
+            if (employee[i].getSalary() < minSalary) {
+                minSalary = employee[i].getSalary();
+                indexMinSalary = i;
+            }
+        }
+        return indexMinSalary;
+    }
+
+    private static int getPersonMinSalary(Employee[] employee, int department) {
+        int minSalary = Integer.MAX_VALUE;
+        int indexMinSalary = 0;
+        for (int i = 1; i < employee.length; i++) {
+            if (employee[i].getDepartment() == department && (employee[i].getSalary() < minSalary)) {
+                minSalary = employee[i].getSalary();
+                indexMinSalary = i;
+            }
+        }
+        return indexMinSalary;
+    }
+
+
+    private static int getTotalSalaryMonth(Employee[] employee) {
         int total = 0;
-        for (int i = 0; i < employee.length; i++) {
-            total += employee[i].getSalary();
+        for (Employee value : employee) {
+            total += value.getSalary();
         }
         return total;
     }
 
-    private static void GetAllPersons(Employee[] employee) {
-        for (int i = 0; i < employee.length; i++) {
-            System.out.println(employee[i]);
+    private static int getTotalSalaryMonth(Employee[] employee, int department) {
+        int total = 0;
+        for (Employee value : employee) {
+            if (value.getDepartment() == department) {
+                total += value.getSalary();
+            }
+        }
+        return total;
+    }
+
+    private static void printAllPersonsData(Employee[] employee) {
+        for (Employee value : employee) {
+            System.out.println(value);
         }
     }
 
-    public static void FullArray(Employee[] employee) {
+    public static void fullArray(Employee[] employee) {
         employee[0] = new Employee("Касперский", "Евгений", "Валентинович", 1, 28000);
         employee[1] = new Employee("Баранов", "Андрей", "Николаевич", 3, 32500);
         employee[2] = new Employee("Зыкин", "Сергей", "Викторович", 2, 30000);

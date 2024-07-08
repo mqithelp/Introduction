@@ -1,13 +1,19 @@
 import java.util.Objects;
 
+
 public class Employee {
     public static int countId = 0;
+    private static int[] personsDepartment = new int[6];
     private int id;
-    private String surname;
-    private String name;
-    private String patronymic;
+    private final String surname;
+    private final String name;
+    private final String patronymic;
     private int department;
     private int salary;
+
+    public static int getPersonsDepartment(int id) {
+        return personsDepartment[id];
+    }
 
     public void setDepartment(int department) {
         this.department = department;
@@ -18,6 +24,9 @@ public class Employee {
     }
 
     public Employee(String surname, String name, String patronymic, int department, int salary) {
+        if (department <= 1 || department >= 6) {
+            department = 1;
+        }
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -25,6 +34,7 @@ public class Employee {
         this.salary = salary;
         id = countId;
         countId++;
+        personsDepartment[department]++;
     }
 
     public int getId() {
