@@ -31,10 +31,33 @@ public class Main {
                 + getTotalSalaryMonth(employee, department));
         System.out.println("Средняя зарплата за месяц сотрудников отдела " +
                 department + ": " + getAverageSalary(employee, department));
-//        indexSalary(employee, 10,department);
-//        printAllPersonsData(employee);
-//        System.out.println("------");
-//        printAllPersonsData(employeeDepartment);
+
+        indexSalary(employee, 10, department);
+        printAllPersonsData(employee, department);
+        System.out.println("===[ Ищем сотрудников больше или меньше определенной зарплаты. ]====");
+        int xSalary = 34000;
+        System.out.println("Сотрудники с зарплатой выше " + xSalary);
+        findAndPrintAboveSalary(employee, xSalary);
+        System.out.println("Сотрудники с зарплатой ниже " + xSalary);
+        findAndPrintBeforeSalary(employee, xSalary);
+    }
+
+    private static void findAndPrintBeforeSalary(Employee[] employee, int xSalary) {
+        for (Employee value : employee) {
+            if (value.getSalary() < xSalary) {
+                System.out.println("id=" + value.getId() + ". " +
+                        value.getFullName()+".\tЗарплата = "+value.getSalary());
+            }
+        }
+    }
+
+    private static void findAndPrintAboveSalary(Employee[] employee, int xSalary) {
+        for (Employee value : employee) {
+            if (value.getSalary() >= xSalary) {
+                System.out.println("id=" + value.getId() + ". " +
+                        value.getFullName()+".\tЗарплата = "+value.getSalary());
+            }
+        }
     }
 
     private static void indexSalary(Employee[] employee, int indexPercent) {
@@ -68,7 +91,7 @@ public class Main {
 
     private static int getAverageSalary(Employee[] employee, int department) {
 
-        return getTotalSalaryMonth(employee,department) / Employee.getPersonsDepartment(department);
+        return getTotalSalaryMonth(employee, department) / Employee.getPersonsDepartment(department);
     }
 
 
@@ -143,6 +166,15 @@ public class Main {
     private static void printAllPersonsData(Employee[] employee) {
         for (Employee value : employee) {
             System.out.println(value);
+        }
+    }
+
+    private static void printAllPersonsData(Employee[] employee, int departmentNum) {
+        for (Employee value : employee) {
+            if (value.getDepartment() == departmentNum) {
+                System.out.println("id=" + value.getId() + ". " +
+                        value.getFullName()+".\tЗарплата = "+value.getSalary());
+            }
         }
     }
 
