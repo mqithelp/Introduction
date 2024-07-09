@@ -153,4 +153,13 @@ public class EmployeeBook {
         employee[8] = new Employee("Волнов", "Игорь", "Николаевич", 5, 34000);
         employee[9] = new Employee("Густафик", "Владимир", "Михайлович", 4, 32000);
     }
+
+    public void deletePerson(int id) {
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i].getId() == id) {
+                Employee.decreaseDepartment(employee[i].getDepartment());
+                employee[i] = null;
+            }
+        }
+    }
 }

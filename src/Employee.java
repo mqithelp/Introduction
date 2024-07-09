@@ -15,6 +15,14 @@ public class Employee {
         return personsDepartment[id];
     }
 
+    public static void decreaseDepartment(int id) {
+        personsDepartment[id]--;
+    }
+
+    public static void increaseDepartment(int id) {
+        personsDepartment[id]++;
+    }
+
     public void setDepartment(int department) {
         this.department = department;
     }
