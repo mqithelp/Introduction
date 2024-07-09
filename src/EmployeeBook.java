@@ -58,7 +58,7 @@ public class EmployeeBook {
     }
 
 
-    public int getPersonMaxSalary() {
+    public String getPersonMaxSalary() {
         int maxSalary = employee[0].getSalary();
         int indexMaxSalary = 0;
         for (int i = 1; i < employee.length; i++) {
@@ -67,11 +67,11 @@ public class EmployeeBook {
                 indexMaxSalary = i;
             }
         }
-        return indexMaxSalary;
+        return employee[indexMaxSalary].toString();
     }
 
-    public int getPersonMaxSalary(int department) {
-        int maxSalary = employee[0].getSalary();
+    public String getPersonMaxSalary(int department) {
+        int maxSalary = Integer.MIN_VALUE;
         int indexMaxSalary = 0;
         for (int i = 1; i < employee.length; i++) {
             if (employee[i].getDepartment() == department && employee[i].getSalary() > maxSalary) {
@@ -79,11 +79,11 @@ public class EmployeeBook {
                 indexMaxSalary = i;
             }
         }
-        return indexMaxSalary;
+        return employee[indexMaxSalary].toString();
     }
 
 
-    public int getPersonMinSalary() {
+    public String getPersonMinSalary() {
         int minSalary = employee[0].getSalary();
         int indexMinSalary = 0;
         for (int i = 1; i < employee.length; i++) {
@@ -92,10 +92,10 @@ public class EmployeeBook {
                 indexMinSalary = i;
             }
         }
-        return indexMinSalary;
+        return employee[indexMinSalary].toString();
     }
 
-    public int getPersonMinSalary(int department) {
+    public String getPersonMinSalary(int department) {
         int minSalary = Integer.MAX_VALUE;
         int indexMinSalary = 0;
         for (int i = 1; i < employee.length; i++) {
@@ -104,7 +104,7 @@ public class EmployeeBook {
                 indexMinSalary = i;
             }
         }
-        return indexMinSalary;
+        return employee[indexMinSalary].toString();
     }
 
 
