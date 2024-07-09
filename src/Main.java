@@ -18,7 +18,9 @@ public class Main {
         printFullNames(employee);
 
         System.out.println("==========[ Повышенная сложность ]==========");
-        indexSalary(employee, 7);
+        int indexSalary = 7;
+        System.out.println("Индексируем зарплату на " + indexSalary + "%");
+        indexSalary(employee, indexSalary);
         printAllPersonsData(employee);
         int department = 4; //переменная для задания повышенной сложности
 
@@ -32,21 +34,23 @@ public class Main {
         System.out.println("Средняя зарплата за месяц сотрудников отдела " +
                 department + ": " + getAverageSalary(employee, department));
 
-        indexSalary(employee, 10, department);
+        System.out.println("Индексируем зарплату в отделе " + department + ", на " + indexSalary + "%");
+        int indexSalaryDepartment = 10;
+        indexSalary(employee, indexSalaryDepartment, department);
         printAllPersonsData(employee, department);
         System.out.println("===[ Ищем сотрудников больше или меньше определенной зарплаты. ]====");
         int xSalary = 34000;
-        System.out.println("Сотрудники с зарплатой выше " + xSalary);
-        findAndPrintAboveSalary(employee, xSalary);
         System.out.println("Сотрудники с зарплатой ниже " + xSalary);
         findAndPrintBeforeSalary(employee, xSalary);
+        System.out.println("Сотрудники с зарплатой выше " + xSalary);
+        findAndPrintAboveSalary(employee, xSalary);
     }
 
     private static void findAndPrintBeforeSalary(Employee[] employee, int xSalary) {
         for (Employee value : employee) {
             if (value.getSalary() < xSalary) {
                 System.out.println("id=" + value.getId() + ". " +
-                        value.getFullName()+".\tЗарплата = "+value.getSalary());
+                        value.getFullName() + ".\tЗарплата = " + value.getSalary());
             }
         }
     }
@@ -55,7 +59,7 @@ public class Main {
         for (Employee value : employee) {
             if (value.getSalary() >= xSalary) {
                 System.out.println("id=" + value.getId() + ". " +
-                        value.getFullName()+".\tЗарплата = "+value.getSalary());
+                        value.getFullName() + ".\tЗарплата = " + value.getSalary());
             }
         }
     }
@@ -173,7 +177,7 @@ public class Main {
         for (Employee value : employee) {
             if (value.getDepartment() == departmentNum) {
                 System.out.println("id=" + value.getId() + ". " +
-                        value.getFullName()+".\tЗарплата = "+value.getSalary());
+                        value.getFullName() + ".\tЗарплата = " + value.getSalary());
             }
         }
     }

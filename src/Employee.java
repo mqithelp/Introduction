@@ -76,14 +76,14 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "ФИО: " +
-                 surname + ' ' +
-                 name + ' ' +
-                 patronymic +
+        return "id=" + getId() +
+                "\tФИО: " + surname + ' ' +
+                name + ' ' + patronymic +
                 ". Отдел=" + department +
                 ". Зарплата=" + salary;
     }
-    public String getFullName(){
+
+    public String getFullName() {
         return surname + ' ' + name + ' ' + patronymic;
     }
 }
