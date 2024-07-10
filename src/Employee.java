@@ -3,7 +3,6 @@ import java.util.Objects;
 
 public class Employee {
     public static int countId = 0;
-    private static int[] personsDepartment = new int[6];
     private int id;
     private final String surname;
     private final String name;
@@ -12,15 +11,15 @@ public class Employee {
     private int salary;
 
     public static int getPersonsDepartment(int id) {
-        return personsDepartment[id];
+        return EmployeeBook.personsDepartment[id];
     }
 
     public static void decreaseDepartment(int id) {
-        personsDepartment[id]--;
+        EmployeeBook.personsDepartment[id]--;
     }
 
     public static void increaseDepartment(int id) {
-        personsDepartment[id]++;
+        EmployeeBook.personsDepartment[id]++;
     }
 
     public void setDepartment(int department) {
@@ -42,7 +41,7 @@ public class Employee {
         this.salary = salary;
         id = countId;
         countId++;
-        personsDepartment[department]++;
+        EmployeeBook.personsDepartment[department]++;
     }
 
     public int getId() {
@@ -74,7 +73,6 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-//        return id == employee.id && department == employee.department && salary == employee.salary && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(patronymic, employee.patronymic);
         return Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(patronymic, employee.patronymic);
 
     }

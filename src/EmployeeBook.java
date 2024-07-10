@@ -3,6 +3,8 @@ import java.util.Arrays;
 public class EmployeeBook {
     private final Employee[] employee = new Employee[10];
     private final int[] statusArrayPersons = new int[10];
+    public static int[] personsDepartment = new int[6];
+
 
     public EmployeeBook() {
         fullArray(this.employee);
