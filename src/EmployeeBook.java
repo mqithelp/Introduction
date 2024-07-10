@@ -1,5 +1,8 @@
+import java.util.Arrays;
+
 public class EmployeeBook {
     private final Employee[] employee = new Employee[10];
+    private final int[] statusArrayPersons = new int[10];
 
     public EmployeeBook() {
         fullArray(this.employee);
@@ -128,7 +131,7 @@ public class EmployeeBook {
 
     public void printAllPersonsData(int departmentNum) {
         for (Employee value : employee) {
-            if (value.getDepartment() == departmentNum) {
+            if (value != null && value.getDepartment() == departmentNum) {
                 System.out.println("id=" + value.getId() + ". " +
                         value.getFullName() + ".\tЗарплата = " + value.getSalary());
             }
@@ -152,14 +155,54 @@ public class EmployeeBook {
         employee[7] = new Employee("Брябрин", "Владимир", "Михайлович", 2, 31500);
         employee[8] = new Employee("Волнов", "Игорь", "Николаевич", 5, 34000);
         employee[9] = new Employee("Густафик", "Владимир", "Михайлович", 4, 32000);
+
+        Arrays.fill(statusArrayPersons, 1);
     }
 
     public void deletePerson(int id) {
+        boolean found = false;
         for (int i = 0; i < employee.length; i++) {
-            if (employee[i].getId() == id) {
-                Employee.decreaseDepartment(employee[i].getDepartment());
-                employee[i] = null;
+            if (statusArrayPersons[i] == 1) {
+                if (employee[i].getId() == id) {
+                    Employee.decreaseDepartment(employee[i].getDepartment());
+                    employee[i] = null;
+                    statusArrayPersons[i] = 0;
+                    found = true;
+                }
             }
         }
+        if (!found) {
+            System.out.println("Сотрудник с id=" + id + " не найден.");
+        }
+    }
+
+    private int getPlaceForPersons() {
+        for (int i = 0; i < statusArrayPersons.length; i++) {
+            if (statusArrayPersons[i] == 0) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public void addPerson(Employee person) {
+        if (getPlaceForPersons() != 0 && !foundDuplicate(person)) {
+            employee[getPlaceForPersons()] = person;
+            statusArrayPersons[getPlaceForPersons()] = 1;
+        } else {
+            System.out.println("Нет места в базе данных. Удалите записи");
+        }
+    }
+
+    private boolean foundDuplicate(Employee person) {
+        for (int i = 0; i < employee.length; i++) {
+            if (statusArrayPersons[i] == 1) {
+                if (employee[i].equals(person)) {
+                    System.out.println("Такой сотрудник уже есть в базе данных");
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

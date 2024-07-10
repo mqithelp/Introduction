@@ -43,10 +43,21 @@ public class Main {
         employeeBook.findAndPrintBeforeSalary(xSalary);
         System.out.println("Сотрудники с зарплатой выше " + xSalary);
         employeeBook.findAndPrintAboveSalary(xSalary);
-        int id = 8;
-        employeeBook.deletePerson(id);
+
+        employeeBook.deletePerson(3);
+        employeeBook.deletePerson(2);
         System.out.println("---------------");
-        employeeBook.printAllPersonsData(5);
+        employeeBook.printAllPersonsData();
+        Employee person = new Employee("Ашманов", "Игорь", "Станиславович", 2, 33500);
+        employeeBook.addPerson(person);
+
+        person = new Employee("Густафик", "Владимир", "Михайлович", 4, 32000);
+        employeeBook.addPerson(person);
+        person = new Employee("Сухов", "Андрей", "Юрьевич", 3, 34500);
+        employeeBook.addPerson(person);
+
+        employeeBook.printAllPersonsData();
+
     }
 
 
