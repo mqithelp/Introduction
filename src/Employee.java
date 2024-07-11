@@ -2,7 +2,7 @@ import java.util.Objects;
 
 
 public class Employee {
-    public static int countId = 0;
+    private static int count;
     private int id;
     private final String surname;
     private final String name;
@@ -10,28 +10,8 @@ public class Employee {
     private int department;
     private int salary;
 
-    public static int getPersonsDepartment(int id) {
-        return EmployeeBook.personsDepartment[id];
-    }
-
-    public static void decreaseDepartment(int id) {
-        EmployeeBook.personsDepartment[id]--;
-    }
-
-    public static void increaseDepartment(int id) {
-        EmployeeBook.personsDepartment[id]++;
-    }
-
-    public void setDepartment(int department) {
-        this.department = department;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
     public Employee(String surname, String name, String patronymic, int department, int salary) {
-        if (department <= 1 || department >= 6) {
+        if (department < 1 || department > 5) {
             department = 1;
         }
         this.name = name;
@@ -39,10 +19,22 @@ public class Employee {
         this.patronymic = patronymic;
         this.department = department;
         this.salary = salary;
-        id = countId;
-        countId++;
-        EmployeeBook.personsDepartment[department]++;
+        id = count;
+        count++;
+        EmployeeBook.increaseDepartment(department);
     }
+
+    public void setDepartment(int department) {
+        if (department < 1 || department > 5) {
+            department = 1;
+        }
+        this.department = department;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
 
     public int getId() {
         return id;
@@ -68,6 +60,10 @@ public class Employee {
         return salary;
     }
 
+    public String getFullName() {
+        return surname + ' ' + name + ' ' + patronymic;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,7 +87,5 @@ public class Employee {
                 ". Зарплата=" + salary;
     }
 
-    public String getFullName() {
-        return surname + ' ' + name + ' ' + patronymic;
-    }
+
 }

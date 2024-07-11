@@ -3,11 +3,11 @@ import java.util.Arrays;
 public class EmployeeBook {
     private final Employee[] employee = new Employee[10];
     private final int[] statusArrayPersons = new int[10];
-    public static int[] personsDepartment = new int[6];
+    private static int[] personsDepartment = new int[6];
 
 
     public EmployeeBook() {
-        fullArray(this.employee);
+        init(this.employee);
     }
 
     public void findAndPrintBeforeSalary(int xSalary) {
@@ -59,7 +59,7 @@ public class EmployeeBook {
 
     public int getAverageSalary(int department) {
 
-        return getTotalSalaryMonth(department) / Employee.getPersonsDepartment(department);
+        return getTotalSalaryMonth(department) / personsDepartment[department];
     }
 
 
@@ -75,7 +75,7 @@ public class EmployeeBook {
         return employee[indexMaxSalary].toString();
     }
 
-    public String getPersonMaxSalary(int department) {
+    public Employee getPersonMaxSalary(int department) {
         int maxSalary = Integer.MIN_VALUE;
         int indexMaxSalary = 0;
         for (int i = 1; i < employee.length; i++) {
@@ -84,7 +84,7 @@ public class EmployeeBook {
                 indexMaxSalary = i;
             }
         }
-        return employee[indexMaxSalary].toString();
+        return employee[indexMaxSalary];
     }
 
 
@@ -100,7 +100,7 @@ public class EmployeeBook {
         return employee[indexMinSalary].toString();
     }
 
-    public String getPersonMinSalary(int department) {
+    public Employee getPersonMinSalary(int department) {
         int minSalary = Integer.MAX_VALUE;
         int indexMinSalary = 0;
         for (int i = 1; i < employee.length; i++) {
@@ -109,7 +109,7 @@ public class EmployeeBook {
                 indexMinSalary = i;
             }
         }
-        return employee[indexMinSalary].toString();
+        return employee[indexMinSalary];
     }
 
 
@@ -146,7 +146,7 @@ public class EmployeeBook {
         }
     }
 
-    private void fullArray(Employee[] employee) {
+    private void init(Employee[] employee) {
         employee[0] = new Employee("Касперский", "Евгений", "Валентинович", 1, 28000);
         employee[1] = new Employee("Баранов", "Андрей", "Николаевич", 3, 32500);
         employee[2] = new Employee("Зыкин", "Сергей", "Викторович", 2, 30000);
@@ -166,7 +166,7 @@ public class EmployeeBook {
         for (int i = 0; i < employee.length; i++) {
             if (statusArrayPersons[i] == 1) {
                 if (employee[i].getId() == id) {
-                    Employee.decreaseDepartment(employee[i].getDepartment());
+                    decreaseDepartment(employee[i].getDepartment());
                     employee[i] = null;
                     statusArrayPersons[i] = 0;
                     found = true;
@@ -176,6 +176,14 @@ public class EmployeeBook {
         if (!found) {
             System.out.println("Сотрудник с id=" + id + " не найден.");
         }
+    }
+
+    public static void decreaseDepartment(int id) {
+        personsDepartment[id]--;
+    }
+
+    public static void increaseDepartment(int id) {
+        personsDepartment[id]++;
     }
 
     private int getPlaceForPersons() {
