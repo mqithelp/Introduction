@@ -21,7 +21,6 @@ public class Employee {
         this.salary = salary;
         id = count;
         count++;
-        EmployeeBook.increaseDepartment(department);
     }
 
     public void setDepartment(int department) {

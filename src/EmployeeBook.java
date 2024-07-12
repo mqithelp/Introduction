@@ -1,10 +1,5 @@
-import java.util.Arrays;
-
 public class EmployeeBook {
     private final Employee[] employee = new Employee[10];
-    private final int[] statusArrayPersons = new int[10];
-    private static int[] personsDepartment = new int[6];
-
 
     public EmployeeBook() {
         init(this.employee);
@@ -58,8 +53,15 @@ public class EmployeeBook {
     }
 
     public int getAverageSalary(int department) {
-
-        return getTotalSalaryMonth(department) / personsDepartment[department];
+        int sum = 0;
+        int count = 0;
+        for (Employee value : employee) {
+            if (value.getDepartment() == department) {
+                sum += value.getSalary();
+                count++;
+            }
+        }
+        return sum / count;
     }
 
 
@@ -87,7 +89,6 @@ public class EmployeeBook {
         return employee[indexMaxSalary];
     }
 
-
     public String getPersonMinSalary() {
         int minSalary = employee[0].getSalary();
         int indexMinSalary = 0;
@@ -111,7 +112,6 @@ public class EmployeeBook {
         }
         return employee[indexMinSalary];
     }
-
 
     public int getTotalSalaryMonth() {
         int total = 0;
@@ -158,17 +158,14 @@ public class EmployeeBook {
         employee[8] = new Employee("Волнов", "Игорь", "Николаевич", 5, 34000);
         employee[9] = new Employee("Густафик", "Владимир", "Михайлович", 4, 32000);
 
-        Arrays.fill(statusArrayPersons, 1);
     }
 
     public void deletePerson(int id) {
         boolean found = false;
         for (int i = 0; i < employee.length; i++) {
-            if (statusArrayPersons[i] == 1) {
+            if (employee[i] != null) {
                 if (employee[i].getId() == id) {
-                    decreaseDepartment(employee[i].getDepartment());
                     employee[i] = null;
-                    statusArrayPersons[i] = 0;
                     found = true;
                 }
             }
@@ -178,40 +175,32 @@ public class EmployeeBook {
         }
     }
 
-    public static void decreaseDepartment(int id) {
-        personsDepartment[id]--;
-    }
-
-    public static void increaseDepartment(int id) {
-        personsDepartment[id]++;
-    }
-
-    private int getPlaceForPersons() {
-        for (int i = 0; i < statusArrayPersons.length; i++) {
-            if (statusArrayPersons[i] == 0) {
+    private int getFreePlaceForPersons() {
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i] == null) {
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     public void addPerson(Employee person) {
-        if (getPlaceForPersons() != 0 && !foundDuplicate(person)) {
-            employee[getPlaceForPersons()] = person;
-            statusArrayPersons[getPlaceForPersons()] = 1;
+        if (getFreePlaceForPersons() != -1 && !foundDuplicate(person)) {
+            employee[getFreePlaceForPersons()] = person;
         } else {
             System.out.println("Нет места в базе данных. Удалите записи");
         }
     }
 
     private boolean foundDuplicate(Employee person) {
-        for (int i = 0; i < employee.length; i++) {
-            if (statusArrayPersons[i] == 1) {
-                if (employee[i].equals(person)) {
+        for (Employee value : employee) {
+            if (value != null) {
+                if (value.equals(person)) {
                     System.out.println("Такой сотрудник уже есть в базе данных");
                     return true;
                 }
             }
+
         }
         return false;
     }

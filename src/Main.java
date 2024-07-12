@@ -55,7 +55,7 @@ public class Main {
         employeeBook.addPerson(person);
         person = new Employee("Сухов", "Андрей", "Юрьевич", 3, 34500);
         employeeBook.addPerson(person);
-
+        employeeBook.addPerson(person);
         employeeBook.printAllPersonsData();
 
     }
